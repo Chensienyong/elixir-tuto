@@ -2,5 +2,5 @@
 
 To compile with Elixir
 ```sh
-  elixir simple.exs
+elixir simple.exs
 ```
