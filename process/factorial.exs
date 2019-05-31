@@ -34,4 +34,11 @@ defmodule Factorial do
   def calc_product(list) do
     Enum.reduce(list, 1, &(&1 * &2))
   end
+
+  # just a helper function used to time the other functions
+  def run(f_name, args) do
+    :timer.tc(Factorial, f_name, args)
+    |> elem(0) # only displays the time as I didn't want to log numbers that could have thousands of digits
+    |> IO.inspect(label: "----->")
+  end
 end
