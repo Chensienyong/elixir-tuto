@@ -77,4 +77,45 @@ defmodule Animals do
     binary = :erlang.term_to_binary(zoo)
     File.write(filename, binary)
   end
+
+  @doc """
+  load takes filename and returns a list of animals if the file exists
+
+  ## Examples
+
+      iex> Animals.load("my_animals")
+      ["lion", "tiger", "gorilla", "elephant", "monkey", "giraffe"]
+      iex> Animals.load("aglkjhdfg")
+      "File does not exist"
+
+  """
+  def load(filename) do
+    # here we are running a case expression on the result of File.read(filename)
+    # if we receive an :ok then we want to return the list
+    # if we receive an error then we want to give the user an error-friendly message
+    case File.read(filename) do
+      {:ok, binary} -> :erlang.binary_to_term(binary)
+      {:error, _reason} -> "File does not exist"
+    end
+  end
+
+  @doc """
+  selection takes a number, creates a zoo, randomises it and then returns a list
+  of animals of length selected
+
+  ## Examples
+
+      iex> Animals.selection(2)
+      ["gorilla", "giraffe"]
+
+  """
+  def selection(number_of_animals) do
+    # We are using the pipe operator here. It takes the value returned from
+    # the expression and passes it down as the first argument in the expression
+    # below. see_animals takes two arguments but only one needs to be specified
+    # as the first is provided by the pipe operator
+    Animals.create_zoo
+    |> Animals.randomise
+    |> Animals.see_animals(number_of_animals)
+  end
 end
