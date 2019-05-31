@@ -22,9 +22,10 @@ defmodule Animals do
 
   ## Examples
 
+      iex> :rand.seed(:exsplus, {1, 2, 3})
       iex> zoo = Animals.create_zoo
       iex> Animals.randomise(zoo)
-      ["monkey", "tiger", "elephant", "gorilla", "giraffe", "lion"]
+      ["monkey", "giraffe", "tiger", "lion", "elephant", "gorilla"]
 
   """
   def randomise(zoo) do
@@ -105,8 +106,9 @@ defmodule Animals do
 
   ## Examples
 
+      iex> :rand.seed(:exsplus, {1, 2, 3})
       iex> Animals.selection(2)
-      ["gorilla", "giraffe"]
+      ["elephant", "gorilla"]
 
   """
   def selection(number_of_animals) do
