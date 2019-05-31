@@ -3,11 +3,21 @@ defmodule Animals.MixProject do
 
   def project do
     [
-      app: :animals,
+      name: :animals_sample,
+      description: "animals sample elixir",
+      app: :animals_sample,
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      package: package(),
+    ]
+  end
+
+  defp package do
+    [
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/Chensienyong/elixir-tuto"}
     ]
   end
 

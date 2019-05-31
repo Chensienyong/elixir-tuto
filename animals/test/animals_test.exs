@@ -3,7 +3,7 @@ defmodule AnimalsTest do
   doctest Animals
 
   test "randomise" do
-    zoo = Animals.create_zoo
+    zoo = Animals.create_zoo()
     refute zoo == Animals.randomise(zoo)
   end
 end
